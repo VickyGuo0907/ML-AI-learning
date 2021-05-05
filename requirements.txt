@@ -2,3 +2,5 @@
 mkdocs>=1.1
 mkdocs-material>=5.1.0
 pymdown-extensions
+pyspark
+pandas

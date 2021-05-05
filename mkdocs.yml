@@ -34,6 +34,8 @@ nav:
   - Home: index.md
   - ML/AI:
     - Machine Learning: ml-ai/ml.md
+  - Spark:
+    - Spark Concept: spark/spark-concept.md
   - Interviews Preparation:
       - Interview Question: interviews/knowledge.md
 
