@@ -10,7 +10,7 @@
 * Algorithms 
 
 
-![Three Components](../images/3-components.jpg)
+![Three Components](images/3-components.jpg)
 
 ### Learning vs Intelligence
 
@@ -22,7 +22,7 @@
 
 * **Deep Learning** is a modern method of building, training, and using neural networks. 
 
-![relationships](../images/ml-relations.jpg)
+![relationships](images/ml-relations.jpg)
 
 
 
@@ -30,15 +30,15 @@
 
 * Full view of machine learning
 
-![machine learning map](../images/ml-full.jpg)
+![machine learning map](images/ml-full.jpg)
 
 * Four main directions in machine learning
 
-![Four main directions](../images/four-main-directions.jpg)
+![Four main directions](images/four-main-directions.jpg)
 
 ### Part 1. Classic Machine Learning
 
-![classical machine learning](../images/classical-ml.jpg)
+![classical machine learning](images/classical-ml.jpg)
 
 
 ### 1.1 Supervised Learning
@@ -52,7 +52,7 @@ the machine has a "supervisor" or a "teacher" who gives the machine all the answ
 
 * "Splits objects based at one of the attributes known beforehand. Separate socks by based on color, documents based on language, music by genre"
 
-![classification](../images/classification.jpg)
+![classification](images/classification.jpg)
 
 * Today used for:
     * Spam filtering
@@ -76,7 +76,7 @@ the machine has a "supervisor" or a "teacher" who gives the machine all the answ
 
 * "Draw a line through these dots. Yep, that's the machine learning"
 
-![classification](../images/regression.jpg)
+![regression](images/regression.jpg)
 
 * Today this is used for:
 
@@ -89,3 +89,32 @@ the machine has a "supervisor" or a "teacher" who gives the machine all the answ
 
 ### 1.2 Unsupervised Learning
 
+#### Clustering
+
+* "Divides objects based on unknown features. Machine chooses the best way"
+
+![clustering](images/clustering.jpeg)
+
+* Nowadays used:
+
+    * For market segmentation (types of customers, loyalty)
+    * To merge close points on a map
+    * For image compression
+    * To analyze and label new data
+    * To detect abnormal behavior
+
+popular algorithms: K-means_clustering, Mean-Shift, DBSCAN
+* [The 5 Clustering Algorithms Data Scientists Need to Know](https://towardsdatascience.com/the-5-clustering-algorithms-data-scientists-need-to-know-a36d136ef68)
+
+#### Dimensionality-Reduction(Generalization)
+* "Assembles specific features into more high-level ones"
+
+* Nowadays is used for:
+
+    * Recommender systems (★)
+    * Beautiful visualizations
+    * Topic modeling and similar document search
+    * Fake image analysis
+    * Risk management
+
+* Popular algorithms: Principal Component Analysis (PCA), Singular Value Decomposition (SVD), Latent Dirichlet allocation (LDA), Latent Semantic Analysis (LSA, pLSA, GLSA), t-SNE (for visualization)
