@@ -40,6 +40,9 @@ nav:
     - Google ML Crash Course: ml-ai/google-ml-crash-course.md
   - Spark:
     - Spark Concept: spark/spark-concept.md
-  - Interviews Preparation:
-      - Interview Question: interviews/knowledge.md
+  - Basic Interviews Preparation:
+    - System Design: systemdesign/index.md
+  - ML/AI Interview Question: 
+    - Core Concepts: mlinterviews/knowledge.md
+
 
