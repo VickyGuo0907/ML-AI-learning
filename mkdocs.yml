@@ -41,7 +41,8 @@ nav:
   - Spark:
     - Spark Concept: spark/spark-concept.md
   - Basic Interviews Preparation:
-    - System Design: systemdesign/index.md
+    - System Design Core & Cheatsheet: systemdesign/index.md 
+    - System Design Interview Questions: systemdesign/interview-questions.md
   - ML/AI Interview Question: 
     - Core Concepts: mlinterviews/knowledge.md
 
