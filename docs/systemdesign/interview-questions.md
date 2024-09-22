@@ -272,7 +272,7 @@ Both techniques can be used together in some scenarios to optimize different asp
 
 ### 6. What's different between API Gateway vs Load Balancer?
 
-Detail Materials: [Difference between API Gateway vs Load Balancer](https://medium.com/javarevisited/difference-between-api-gateway-and-load-balancer-in-microservices-8c8b552a024)
+[Detail Materials](https://medium.com/javarevisited/difference-between-api-gateway-and-load-balancer-in-microservices-8c8b552a024)
 
 Here's a breakdown of the differences between an **API Gateway** and a **Load Balancer**:
 
