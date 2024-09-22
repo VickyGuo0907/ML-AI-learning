@@ -43,6 +43,7 @@ nav:
   - Basic Interviews Preparation:
     - System Design Core & Cheatsheet: systemdesign/index.md 
     - System Design Interview Questions: systemdesign/interview-questions.md
+    - Microservices Interview Questions: systemdesign/microservice_questions.md
   - ML/AI Interview Question: 
     - Core Concepts: mlinterviews/knowledge.md
 
