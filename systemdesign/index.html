@@ -1,0 +1,1163 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Learning Materials">
+      
+      
+        <meta name="author" content="Danny Guo">
+      
+      
+      
+        <link rel="prev" href="../spark/spark-concept/">
+      
+      
+        <link rel="next" href="interview-questions/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.36">
+    
+    
+      
+        <title>System Design Core & Cheatsheet - ML&AI Learning Collection Site</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.06209087.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#system-design-interview-core-information" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="ML&amp;AI Learning Collection Site" class="md-header__button md-logo" aria-label="ML&AI Learning Collection Site" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ML&AI Learning Collection Site
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              System Design Core & Cheatsheet
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/VickyGuo0907/ML-AI-learning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ML&amp;AI Learning Collection Site" class="md-nav__button md-logo" aria-label="ML&AI Learning Collection Site" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ML&AI Learning Collection Site
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/VickyGuo0907/ML-AI-learning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ML/AI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            ML/AI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ml-ai/ml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning for everyone
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine Learning A - Z
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Machine Learning A - Z
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ml-ai/ml-az/data-processing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part1 -- Data Preprocessing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ml-ai/ml-az/regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part2 -- Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ml-ai/google-ml-crash-course/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google ML Crash Course
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Spark
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Spark
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spark/spark-concept/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spark Concept
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Basic Interviews Preparation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Basic Interviews Preparation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    System Design Core & Cheatsheet
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    System Design Core & Cheatsheet
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system-design-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Design Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Design Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-scalability" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Scalability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-availability" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Availability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Reliability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-fault-tolerance" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Fault Tolerance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-caching-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Caching Strategies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-load-balancing" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Load Balancing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-scalable-data-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Scalable Data Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-design-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Design Patterns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Performance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-design-cheat-sheets" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Design Cheat Sheets
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="interview-questions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Design Interview Questions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="microservice_questions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Microservices Interview Questions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ML/AI Interview Question
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            ML/AI Interview Question
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mlinterviews/knowledge/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Core Concepts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system-design-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Design Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Design Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-scalability" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Scalability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-availability" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Availability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Reliability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-fault-tolerance" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Fault Tolerance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-caching-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Caching Strategies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-load-balancing" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Load Balancing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-scalable-data-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Scalable Data Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-design-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Design Patterns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Performance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-design-cheat-sheets" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Design Cheat Sheets
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="system-design-interview-core-information">System Design Interview Core Information<a class="headerlink" href="#system-design-interview-core-information" title="Permanent link">&para;</a></h1>
+<h2 id="system-design-concepts">System Design Concepts<a class="headerlink" href="#system-design-concepts" title="Permanent link">&para;</a></h2>
+<p>For more details, see: <a href="https://medium.com/javarevisited/top-10-system-design-concepts-every-programmer-should-learn-54375d8557a6">Top 10 System Design Concepts Every Programmer Should Learn</a></p>
+<ol>
+<li><strong>Scalability</strong></li>
+<li><strong>Availability</strong></li>
+<li><strong>Reliability</strong></li>
+<li><strong>Fault Tolerance</strong></li>
+<li><strong>Caching Strategyies</strong></li>
+<li><strong>Load Balancing</strong></li>
+<li><strong>Security</strong></li>
+<li><strong>Scalable Data Management</strong></li>
+<li><strong>Design Patterns</strong></li>
+<li><strong>Performance Optimization</strong></li>
+</ol>
+<h3 id="1-scalability">1. Scalability<a class="headerlink" href="#1-scalability" title="Permanent link">&para;</a></h3>
+<p>There are two main types of scalability: <strong>vertical scalability and horizontal scalability</strong>. 
+* <strong>Vertical scalability</strong> involves adding more resources, such as CPU, memory, or storage, to a single server or node to handle increased workload. 
+* <strong>Horizontal scalability</strong>, on the other hand, involves adding more servers or nodes to a system to distribute the workload and handle increased demand. Horizontal scalability is often achieved through techniques such as load balancing, sharding, partitioning, and distributed processing.</p>
+<p>Achieving scalability requires careful system design, architecture, and implementation. It involves designing systems that can efficiently handle increasing workloads, efficiently utilize resources, minimize dependencies, and distribute processing across multiple nodes or servers.</p>
+<blockquote>
+<p><em>Techniques such as caching, asynchronous processing, parallel processing, and distributed databases are often used to improve scalability. Testing and performance monitoring are also crucial to ensure that the system continues to perform well as it scales.</em></p>
+</blockquote>
+<h3 id="2-availability">2. Availability<a class="headerlink" href="#2-availability" title="Permanent link">&para;</a></h3>
+<p>High availability is a critical requirement for many systems, especially those that are mission-critical or time-sensitive, such as online services, e-commerce websites, financial systems, and communication networks. Downtime in such systems can result in significant financial losses, reputational damage, and customer dissatisfaction. Therefore, ensuring high availability is a key consideration in system design.</p>
+<p>Achieving <strong>high availability involves designing systems with redundancy,</strong> fault tolerance, and failover mechanisms to minimize the risk of downtime due to hardware failures, software failures, or other unexpected events.</p>
+<blockquote>
+<p><em>In system design, various techniques and strategies are employed to improve availability, such as load balancing, clustering, replication, backup and recovery, monitoring, and proactive maintenance.</em></p>
+</blockquote>
+<h3 id="3-reliability">3. Reliability<a class="headerlink" href="#3-reliability" title="Permanent link">&para;</a></h3>
+<p>Reliability refers to th<strong>e consistency and dependability of a software system</strong> in delivering expected results. Building systems with reliable components, error handling mechanisms, and backup/recovery strategies is crucial for ensuring that the system functions as intended and produces accurate results.</p>
+<p><strong>High reliability is often desired in mission-critical applications,</strong> where system failures can have severe consequences, such as in aviation, healthcare, finance, and other safety-critical domains.</p>
+<blockquote>
+<p><em>Reliability can be achieved through various techniques and strategies, such as redundancy, error detection and correction, fault tolerance, and robust design.</em></p>
+</blockquote>
+<h3 id="4-fault-tolerance">4. Fault Tolerance<a class="headerlink" href="#4-fault-tolerance" title="Permanent link">&para;</a></h3>
+<p>Fault tolerance refers to the ability of a system or component to continue functioning correctly in the presence of faults or failures, such as hardware failures, software bugs, or other unforeseen issues. A fault-tolerant system is designed to detect, isolate, and recover from faults without experiencing complete failure or downtime.</p>
+<blockquote>
+<p><em>There are various techniques and strategies for achieving fault tolerance, such as </em><em>replication</em><em>, where multiple copies of the same data or service are maintained in different locations, so that if one fails, others can take over; checkpointing, where system states are periodically saved, so that in case of failure, the system can be restored to a previously known good state; and graceful degradation, where the system can continue to operate with reduced functionality in the presence of failures.</em></p>
+</blockquote>
+<h3 id="5-caching-strategies">5. Caching Strategies<a class="headerlink" href="#5-caching-strategies" title="Permanent link">&para;</a></h3>
+<p>Caching strategies are techniques used to optimize the performance of systems by storing frequently accessed data or results in a temporary storage location, called a cache, so that it can be quickly retrieved without needing to be recalculated or fetched from the original source. There are several common caching strategies used in system design:</p>
+<ol>
+<li><strong>Full Caching</strong></li>
+<li>
+<p>In this strategy, the entire data set or results are cached in the cache, providing fast access to all the data or results. This strategy is useful when the data or results are relatively small in size and can be easily stored in memory or a local cache.</p>
+</li>
+<li>
+<p><strong>Partial Caching</strong></p>
+</li>
+<li>
+<p>In this strategy, only a subset of the data or results are cached, typically based on usage patterns or frequently accessed data. This strategy is useful when the data or results are large in size or when not all the data or results are frequently accessed, and it is not feasible to cache the entire data set.</p>
+</li>
+<li>
+<p><strong>Time-based Expiration</strong></p>
+</li>
+<li>
+<p>In this strategy, the data or results are cached for a specific duration of time, after which the cache is considered stale, and the data or results are fetched from the original source and updated in the cache. This strategy is useful when the data or results are relatively stable and do not change frequently.</p>
+</li>
+<li>
+<p><strong>LRU (Least Recently Used) or LFU (Least Frequently Used) Replacement Policy</strong></p>
+</li>
+<li>
+<p>In these strategies, the data or results that are least recently used or least frequently used are evicted from the cache to make room for new data or results. These strategies are useful when the cache has limited storage capacity and needs to evict less frequently accessed data to accommodate new data.</p>
+</li>
+<li>
+<p><strong>Write-through or Write-behind Caching</strong></p>
+</li>
+<li>
+<p>In these strategies, the data or results are written to both the cache and the original source (write-through) or only to the cache (write-behind) when updated or inserted. These strategies are useful when the system needs to maintain consistency between the cache and the original source or when the original source cannot be directly updated.</p>
+</li>
+<li>
+<p><strong>Distributed Caching</strong> </p>
+</li>
+<li>
+<p>In this strategy, the cache is distributed across multiple nodes or servers, typically using a distributed caching framework or technology. This strategy is useful when the system is distributed or scaled across multiple nodes or servers and needs to maintain consistency and performance across the distributed cache.</p>
+</li>
+<li>
+<p><strong>Custom Caching</strong> </p>
+</li>
+<li>Custom caching strategies can be implemented based on the specific requirements and characteristics of the system or application. These strategies may involve combinations of the above-mentioned strategies or other custom approaches to suit the unique needs of the system.</li>
+</ol>
+<p>The selection of the <em>appropriate caching strategy depends on various factors such as the size of data or results, frequency of access, volatility of data or results, storage capacity, consistency requirements, and performance goals of the system</em>. Careful consideration and implementation of caching strategies can significantly improve system performance, reduce resource utilization, improve scalability, and enhance user experience.</p>
+<h3 id="6-load-balancing">6. Load Balancing<a class="headerlink" href="#6-load-balancing" title="Permanent link">&para;</a></h3>
+<p>Load balancing is a technique used in distributed systems or networks to distribute incoming network traffic or workload evenly across multiple servers or resources, ensuring that no single server or resource is overwhelmed with excessive traffic or workload.</p>
+<p>Load balancing can be achieved through various algorithms or methods, such as:</p>
+<ol>
+<li><strong>Round Robin:</strong> Incoming requests are distributed sequentially to each server or resource in a rotating manner, ensuring an equal distribution of traffic across all servers or resources</li>
+<li><strong>Least Connection:</strong> Incoming requests are distributed to the server or resource with the least number of active connections, ensuring that the server or resource with the least load receives new requests.</li>
+<li><strong>Source IP Affinity:</strong> Incoming requests from the same client IP address are directed to the same server or resource, ensuring that requests from a specific client are consistently handled by the same server or resource.</li>
+<li><strong>Weighted Round Robin:</strong> Incoming requests are distributed based on predefined weights assigned to each server or resource, allowing for different traffic distribution ratios based on server or resource capacity or capability.</li>
+<li><strong>Adaptive Load Balancing:</strong> Load balancing algorithms dynamically adjust the distribution of traffic based on real-time monitoring of server or resource health, performance, or other metrics, ensuring optimal resource utilization and system performance.</li>
+</ol>
+<p>Load balancing can be implemented using hardware-based load balancers, software-based load balancers, or cloud-based load balancing services. It plays a critical role in distributed systems or networks with high traffic loads or resource-intensive workloads, enabling efficient utilization of resources, enhancing system availability and reliability, and providing seamless user experience.</p>
+<h3 id="7-security">7. Security<a class="headerlink" href="#7-security" title="Permanent link">&para;</a></h3>
+<p>Security in system design refers to the consideration and implementation of measures to protect a system from potential security threats, vulnerabilities, or attacks. It involves designing and implementing systems with built-in security features and practices to safeguard against unauthorized access, data breaches, data leaks, malware attacks, and other security risks.</p>
+<p>Security in system design typically involves the following principles:</p>
+<ol>
+<li><strong>Authentication:</strong> Ensuring that users or entities are verified and granted appropriate access privileges based on their identity and credentials.</li>
+<li><strong>Authorization</strong>: Enforcing access controls and permissions to restrict users or entities from accessing unauthorized resources or performing unauthorized actions.</li>
+<li><strong>Encryption</strong>: Protecting sensitive data by using encryption techniques to prevent unauthorized access or data breaches.</li>
+<li><strong>Auditing and Logging</strong>: Implementing mechanisms to track and log system activities and events for monitoring, auditing, and forensic purposes.</li>
+<li><strong>Input Validation:</strong> Validating and sanitizing all input data to prevent common security vulnerabilities such as SQL injection, cross-site scripting (XSS), and cross-site request forgery (CSRF) attacks.</li>
+<li><strong>Patching and Updates</strong>: Keeping the system up-to-date with the latest security patches and updates to address known security vulnerabilities.</li>
+<li><strong>Defense in Depth</strong>: Implementing multiple layers of security controls, such as firewalls, intrusion detection systems, and antivirus software, to provide a multi-tiered defense against security threats.</li>
+<li><strong>Principle of Least Privilege</strong>: Limiting users or entities’ access privileges to the minimum necessary to perform their tasks, reducing the potential impact of a security breach or attack.</li>
+<li><strong>Secure Communication</strong>: Using secure communication protocols, such as HTTPS or SSL/TLS, to protect data in transit from interception or eavesdropping.</li>
+</ol>
+<h3 id="8-scalable-data-management">8. Scalable Data Management<a class="headerlink" href="#8-scalable-data-management" title="Permanent link">&para;</a></h3>
+<p>Scalable data management refers to the ability of a system or application to effectively handle growing amounts of data without experiencing performance degradation or loss of functionality. It involves designing and implementing data management practices and technologies that can handle increasing data volumes, user loads, and processing requirements, while maintaining acceptable levels of performance and reliability.</p>
+<p>Scalable data management typically involves the following principles:</p>
+<ol>
+<li><strong>Data Partitioning:</strong> Splitting large datasets into smaller, manageable chunks or partitions to distribute the data across multiple storage or processing resources. This helps in reducing the load on individual resources and allows for parallel processing and improved performance.</li>
+<li><strong>Distributed Database Systems:</strong> Using distributed databases or data storage solutions that can distribute data across multiple nodes or servers, enabling horizontal scaling and improved performance.</li>
+<li><strong>Data Replication</strong>: Replicating data across multiple nodes or servers to ensure data availability and fault tolerance. This can involve techniques such as data mirroring, data sharding, or data caching to improve performance and reliability.</li>
+<li><strong>Caching and In-Memory Data Storage:</strong> Caching frequently accessed data or storing data in memory for faster retrieval and processing, reducing the need for expensive disk I/O operations and improving performance.</li>
+<li><strong>Indexing and Query Optimization</strong>: Using efficient indexing and query optimization techniques to speed up data retrieval and processing operations, especially in large datasets.</li>
+<li><strong>Data Compression:</strong> Implementing data compression techniques to reduce the storage footprint and improve data transfer efficiency, especially for large datasets.</li>
+<li><strong>Data Archiving and Purging</strong>: Implementing data archiving and purging practices to remove or archive old or infrequently accessed data, reducing the storage and processing overhead and improving performance.</li>
+<li><strong>Scalable Data Processing Frameworks:</strong> Using scalable data processing frameworks such as Apache Hadoop, Apache Spark, or Apache Flink, that can handle large-scale data processing and analytics tasks in a distributed and parallelized manner.</li>
+<li><strong>Cloud-based Data Management</strong>: Leveraging cloud-based data management services, such as Amazon S3, Amazon RDS, or Google Bigtable, that provide scalable and managed data storage and processing capabilities.</li>
+<li><strong>Monitoring and Scalability Testing</strong>: Regularly monitoring system performance and conducting scalability testing to identify and address performance bottlenecks, resource limitations, or other scalability challenges, and ensuring that the data management practices can effectively handle increasing data volumes and loads.</li>
+</ol>
+<h3 id="9-design-patterns">9.  Design Patterns<a class="headerlink" href="#9-design-patterns" title="Permanent link">&para;</a></h3>
+<p>Design patterns in system design can be categorized into various types, including:</p>
+<ol>
+<li><strong>Creational Patterns:</strong> These patterns focus on object creation mechanisms and provide ways to create objects in a flexible and reusable manner. Examples of creational patterns include Singleton, Factory Method, Abstract Factory, Builder, and Prototype patterns.</li>
+<li><strong>Structural Patterns:</strong> These patterns focus on the organization of classes and objects to form a larger structure or system. Examples of structural patterns include Adapter, Bridge, Composite, Decorator, and Facade patterns.</li>
+<li><strong>Behavioral Patterns:</strong> These patterns focus on the interaction and communication between objects or components within a system. Examples of behavioral patterns include Observer, Strategy, Command, Iterator, and Template Method patterns.</li>
+<li><strong>Architectural Patterns:</strong> These patterns provide high-level guidelines and strategies for designing the overall architecture of a system. Examples of architectural patterns include Model-View-Controller (MVC), Model-View-ViewModel (MVVM), Layered architecture, Microservices, and Event-Driven architecture patterns.</li>
+</ol>
+<h3 id="10-performance">10. Performance<a class="headerlink" href="#10-performance" title="Permanent link">&para;</a></h3>
+<p>System designers need to consider various performance-related factors during the design process, such as choosing appropriate algorithms and data structures, optimizing code, minimizing unnecessary overheads, managing system resources efficiently, and ensuring proper system configuration and tuning. Performance testing and profiling techniques can also be used to identify and address performance bottlenecks and optimize system performance.</p>
+<p>Optimizing performance in system design requires a careful balance between functionality, complexity, and resource utilization. It involves making informed design decisions, using best practices, and continuously monitoring and optimizing system performance to ensure that the system meets its performance requirements and delivers a smooth and efficient user experience.</p>
+<h2 id="system-design-cheat-sheets">System Design Cheat Sheets<a class="headerlink" href="#system-design-cheat-sheets" title="Permanent link">&para;</a></h2>
+<ul>
+<li>From Medium - <a href="https://medium.com/bytebytego-system-design-alliance/system-design-blueprint-the-ultimate-guide-e27b914bf8f1">System Design Blueprint I</a></li>
+</ul>
+<p><img alt="First Cheat Sheet" src="../images/system_design_cheat_sheet_1.webp" /></p>
+<ul>
+<li>From Educative</li>
+</ul>
+<p><img alt="Second Cheat Sheet" src="../images/system_design_cheat_sheet_2.webp" /></p>
+<ul>
+<li>From Educative</li>
+</ul>
+<p><img alt="Third Cheat Sheet" src="../images/system_design_cheat_sheet_3.webp" /></p>
+<ul>
+<li>From DesignGuru</li>
+</ul>
+<p><img alt="Fourth Cheat Sheet" src="../images/system_design_cheat_sheet_4.webp" /></p>
+<ul>
+<li>From Exponent</li>
+</ul>
+<p><img alt="Fifth Cheat Sheet" src="../images/system_design_cheat_sheet_5.webp" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2020 Danny Guo
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+        <script src="../js/links_in_new_tabs.js"></script>
+      
+    
+  </body>
+</html>

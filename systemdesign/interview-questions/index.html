@@ -1,0 +1,1772 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Learning Materials">
+      
+      
+        <meta name="author" content="Danny Guo">
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../microservice_questions/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.36">
+    
+    
+      
+        <title>System Design Interview Questions - ML&AI Learning Collection Site</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.06209087.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#basic-system-design-and-software-architecture-concepts" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="ML&amp;AI Learning Collection Site" class="md-header__button md-logo" aria-label="ML&AI Learning Collection Site" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ML&AI Learning Collection Site
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              System Design Interview Questions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/VickyGuo0907/ML-AI-learning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ML&amp;AI Learning Collection Site" class="md-nav__button md-logo" aria-label="ML&AI Learning Collection Site" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ML&AI Learning Collection Site
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/VickyGuo0907/ML-AI-learning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ML/AI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            ML/AI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-ai/ml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning for everyone
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine Learning A - Z
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Machine Learning A - Z
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-ai/ml-az/data-processing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part1 -- Data Preprocessing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-ai/ml-az/regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part2 -- Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-ai/google-ml-crash-course/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google ML Crash Course
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Spark
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Spark
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spark/spark-concept/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spark Concept
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Basic Interviews Preparation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Basic Interviews Preparation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Design Core & Cheatsheet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    System Design Interview Questions
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    System Design Interview Questions
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system-design-basics-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Design Basics Questions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Design Basics Questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-difference-between-jwt-oauth-and-saml" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Difference between JWT, OAuth and SAML?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-whats-different-between-reverse-proxy-and-forward-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What&rsquo;s different between Reverse Proxy and Forward Proxy?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-differences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Differences
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-horizontal-scaling-and-vertical-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Horizontal scaling and vertical scaling?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-whats-different-btween-microservices-and-monolithic-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. what&rsquo;s different btween Microservices and Monolithic architecture?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-difference-between-vertical-and-horizontal-partitioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Difference between Vertical and horizontal partitioning ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-whats-different-between-api-gateway-vs-load-balancer" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. What&rsquo;s different between API Gateway vs Load Balancer?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-difference-between-kafka-and-rabbitmq" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Difference between Kafka and RabbitMQ?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../microservice_questions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Microservices Interview Questions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ML/AI Interview Question
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            ML/AI Interview Question
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mlinterviews/knowledge/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Core Concepts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system-design-basics-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Design Basics Questions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Design Basics Questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-difference-between-jwt-oauth-and-saml" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Difference between JWT, OAuth and SAML?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-whats-different-between-reverse-proxy-and-forward-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What&rsquo;s different between Reverse Proxy and Forward Proxy?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-differences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Differences
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-horizontal-scaling-and-vertical-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Horizontal scaling and vertical scaling?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-whats-different-btween-microservices-and-monolithic-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. what&rsquo;s different btween Microservices and Monolithic architecture?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-difference-between-vertical-and-horizontal-partitioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Difference between Vertical and horizontal partitioning ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-whats-different-between-api-gateway-vs-load-balancer" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. What&rsquo;s different between API Gateway vs Load Balancer?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-difference-between-kafka-and-rabbitmq" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Difference between Kafka and RabbitMQ?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="basic-system-design-and-software-architecture-concepts">Basic System Design and Software Architecture Concepts<a class="headerlink" href="#basic-system-design-and-software-architecture-concepts" title="Permanent link">&para;</a></h1>
+<h2 id="system-design-basics-questions">System Design Basics Questions<a class="headerlink" href="#system-design-basics-questions" title="Permanent link">&para;</a></h2>
+<h3 id="1-difference-between-jwt-oauth-and-saml">1. Difference between JWT, OAuth and SAML?<a class="headerlink" href="#1-difference-between-jwt-oauth-and-saml" title="Permanent link">&para;</a></h3>
+<p>Here&rsquo;s a breakdown of the differences between <strong>JWT</strong>, <strong>OAuth</strong>, and <strong>SAML</strong>:</p>
+<ol>
+<li><strong>JWT (JSON Web Token)</strong><ul>
+<li><strong>Purpose</strong>: JWT is a token format used for securely transmitting information between parties as a JSON object. It can be used for authentication and information exchange.</li>
+<li><strong>Structure</strong>: A JWT consists of three parts: header, payload, and signature. The payload can include claims (e.g., user ID, roles) and is encoded in Base64.</li>
+<li><strong>Usage</strong>: Commonly used for stateless authentication in web applications (e.g., APIs) where the server can verify the token&rsquo;s signature to authenticate requests.</li>
+<li><strong>State</strong>: Stateless; once issued, the server doesn&rsquo;t need to maintain session state.</li>
+<li><strong>Transport</strong>: Typically sent in HTTP headers (e.g., Authorization: “Bearer token”).</li>
+</ul>
+</li>
+<li><strong>OAuth (Open Authorization)</strong><ul>
+<li><strong>Purpose</strong>: OAuth is an authorization framework that allows third-party applications to access a user’s data without exposing their credentials. It is often used for delegating access.</li>
+<li><strong>Flow</strong>: Involves multiple roles: resource owner, client, authorization server, and resource server. OAuth uses access tokens to grant permission to the client.</li>
+<li><strong>Usage</strong>: Commonly used for authorizing access to APIs (e.g., logging in with Google or Facebook).</li>
+<li><strong>State</strong>: Can be stateful or stateless, depending on implementation. Access tokens can be short-lived, and refresh tokens can be used to obtain new access tokens.</li>
+</ul>
+</li>
+<li><strong>SAML (Security Assertion Markup Language)</strong><ul>
+<li><strong>Purpose</strong>: SAML is an XML-based framework used for Single Sign-On (SSO) across different domains. It allows users to authenticate once and gain access to multiple applications.</li>
+<li><strong>Structure</strong>: Uses XML to encode the assertions that contain user authentication and attribute information.</li>
+<li><strong>Usage</strong>: Commonly used in enterprise environments for SSO between service providers and identity providers.</li>
+<li><strong>Transport</strong>: Typically involves redirects between the user&rsquo;s browser and the identity provider, using browser-based profiles.</li>
+<li><strong>State</strong>: Often stateful, as it involves server-side sessions and assertions.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Summary</strong>
+- <strong>JWT</strong> is a token format mainly used for authentication.
+- <strong>OAuth</strong> is an authorization framework that enables access delegation using tokens.
+- <strong>SAML</strong> is primarily used for Single Sign-On, enabling authentication across different domains.</p>
+<p>Each serves a specific purpose in identity and access management, with different mechanisms and use cases.</p>
+<h3 id="2-whats-different-between-reverse-proxy-and-forward-proxy">2. What&rsquo;s different between Reverse Proxy and Forward Proxy?<a class="headerlink" href="#2-whats-different-between-reverse-proxy-and-forward-proxy" title="Permanent link">&para;</a></h3>
+<p><a href="https://dev.to/somadevtoo/difference-between-forward-proxy-and-reverse-proxy-in-system-design-54g5">Detail Materials</a></p>
+<ol>
+<li>
+<p><strong>Forward Proxy</strong></p>
+<ul>
+<li><strong>Definition</strong>: A forward proxy sits <strong>between a client and the internet</strong>. It acts on behalf of the client, making requests to external servers and forwarding the responses back to the client.</li>
+<li><strong>Primary Role</strong>: </li>
+<li><strong>Client-side proxy</strong>: The forward proxy is used by the client to access the internet.</li>
+<li>It hides the client’s IP address from the destination server.</li>
+<li><strong>Use Cases</strong>:</li>
+<li><strong>Content Filtering</strong>: Restricts or monitors users’ access to certain websites (e.g., in schools or offices).</li>
+<li><strong>Caching</strong>: Speeds up repeated requests by caching content for multiple clients.</li>
+<li><strong>Anonymity</strong>: Allows clients to hide their real IP addresses (e.g., in VPNs or Tor).</li>
+<li><strong>Bypassing Geo-blocks</strong>: Access content that is restricted by location.</li>
+<li><strong>Example</strong>: A user in a company network uses a forward proxy to access an external website. The website only sees the proxy’s IP, not the user’s.</li>
+</ul>
+</li>
+<li>
+<p><strong>Reverse Proxy</strong></p>
+<ul>
+<li><strong>Definition</strong>: A reverse proxy sits <strong>between the internet and a server</strong> (or group of servers). It handles requests from clients, forwards them to the appropriate server, and then sends the server’s response back to the client.</li>
+<li><strong>Primary Role</strong>:</li>
+<li><strong>Server-side proxy</strong>: The reverse proxy is used by the server to manage incoming traffic from the internet.</li>
+<li>It hides the backend server’s IP address from the client.</li>
+<li><strong>Use Cases</strong>:</li>
+<li><strong>Load Balancing</strong>: Distributes incoming traffic across multiple servers to optimize performance and avoid overload.</li>
+<li><strong>Caching</strong>: Caches responses from servers to speed up future requests and reduce server load.</li>
+<li><strong>SSL Termination</strong>: Handles SSL/TLS encryption and decryption, offloading the work from the backend servers.</li>
+<li><strong>Security</strong>: Protects backend servers by filtering malicious traffic and hiding their identities.</li>
+<li><strong>Example</strong>: A client requests a website, and the reverse proxy forwards the request to one of several web servers. The client is unaware of the backend server&rsquo;s details, seeing only the reverse proxy.</li>
+</ul>
+</li>
+</ol>
+<h3 id="key-differences">Key Differences<a class="headerlink" href="#key-differences" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Direction</strong>: </li>
+<li>A <strong>forward proxy</strong> works on behalf of the client, shielding the client from the external network.</li>
+<li>
+<p>A <strong>reverse proxy</strong> works on behalf of the server, shielding the server from the external client.</p>
+</li>
+<li>
+<p><strong>Visibility</strong>:</p>
+</li>
+<li>A <strong>forward proxy</strong> hides the client from the server.</li>
+<li>
+<p>A <strong>reverse proxy</strong> hides the server(s) from the client.</p>
+</li>
+<li>
+<p><strong>Use Cases</strong>:</p>
+</li>
+<li><strong>Forward Proxy</strong>: Used for client-side purposes like anonymity, caching, and content filtering.</li>
+<li><strong>Reverse Proxy</strong>: Used for server-side purposes like load balancing, security, and traffic management.</li>
+</ul>
+<p>In short, forward proxies primarily help clients access external resources, while reverse proxies manage and optimize traffic for servers.</p>
+<h3 id="3-horizontal-scaling-and-vertical-scaling">3. Horizontal scaling and vertical scaling?<a class="headerlink" href="#3-horizontal-scaling-and-vertical-scaling" title="Permanent link">&para;</a></h3>
+<p><a href="https://dev.to/somadevtoo/horizontal-scaling-vs-vertical-scaling-in-system-design-3n09">Detail Materials</a></p>
+<p>Here&rsquo;s a breakdown of the differences between <strong>Horizontal Scaling</strong> and <strong>Vertical Scaling</strong>:</p>
+<ol>
+<li>
+<p><strong>Horizontal Scaling (Scaling Out)</strong></p>
+<ul>
+<li>
+<p><strong>Definition</strong>: Horizontal scaling involves adding more machines (or nodes) to a system to distribute the load across multiple resources. This is also known as &ldquo;scaling out.&rdquo;</p>
+</li>
+<li>
+<p><strong>How It Works</strong>: </p>
+</li>
+<li>Instead of upgrading a single machine, you add more servers or instances to the system. Each new machine or instance shares the workload, helping to increase capacity.</li>
+<li>
+<p>Load balancers are often used to distribute traffic across these multiple instances.</p>
+</li>
+<li>
+<p><strong>Advantages</strong>:</p>
+</li>
+<li><strong>Improved Fault Tolerance</strong>: If one machine fails, others can continue handling the load.</li>
+<li><strong>Easier to Scale</strong>: You can scale by simply adding more machines, especially in cloud environments (e.g., AWS, Azure).</li>
+<li>
+<p><strong>Better for Distributed Systems</strong>: Works well with microservices and cloud-native applications.</p>
+</li>
+<li>
+<p><strong>Challenges</strong>:</p>
+</li>
+<li><strong>Complexity</strong>: Managing multiple servers introduces complexity, requiring strategies like load balancing, data consistency, and distributed management.</li>
+<li>
+<p><strong>Data Replication</strong>: Ensuring consistency across distributed nodes can be challenging, especially for stateful applications.</p>
+</li>
+<li>
+<p><strong>Example</strong>: A web application that serves increasing numbers of users adds more servers to handle the growing traffic, with each server handling a portion of the workload.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Vertical Scaling (Scaling Up)</strong></p>
+<ul>
+<li>
+<p><strong>Definition</strong>: Vertical scaling involves increasing the capacity of a single machine by adding more resources (e.g., CPU, memory, or storage). This is known as &ldquo;scaling up.&rdquo;</p>
+</li>
+<li>
+<p><strong>How It Works</strong>:</p>
+</li>
+<li>The server itself is upgraded by adding more RAM, CPU, storage, or faster components.</li>
+<li>
+<p>The application continues to run on the same server but with more powerful resources.</p>
+</li>
+<li>
+<p><strong>Advantages</strong>:</p>
+</li>
+<li><strong>Simpler Management</strong>: There&rsquo;s only one server to manage, making it easier from an operational perspective.</li>
+<li><strong>No Changes to Architecture</strong>: The underlying architecture remains the same, and no additional load balancing or distribution strategies are needed.</li>
+<li>
+<p><strong>Immediate Performance Boost</strong>: More resources directly improve performance on the single machine.</p>
+</li>
+<li>
+<p><strong>Challenges</strong>:</p>
+</li>
+<li><strong>Limits to Scaling</strong>: There&rsquo;s a physical limit to how much you can scale up a single machine. At some point, you&rsquo;ll hit resource limits.</li>
+<li><strong>Single Point of Failure</strong>: If the server goes down, the entire application could become unavailable, unless additional redundancy measures are in place.</li>
+<li><strong>Cost</strong>: Upgrading a single machine to handle larger loads can become very expensive, especially for high-end hardware.</li>
+</ul>
+</li>
+<li>
+<p><strong>Example</strong>: A database server is experiencing high load, so more RAM and CPUs are added to improve performance without adding more machines.</p>
+</li>
+</ol>
+<p><strong>Key Differences</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Aspect</strong></th>
+<th><strong>Horizontal Scaling (Scaling Out)</strong></th>
+<th><strong>Vertical Scaling (Scaling Up)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Method</strong></td>
+<td>Adding more machines (nodes/instances)</td>
+<td>Upgrading the capacity of a single machine</td>
+</tr>
+<tr>
+<td><strong>Capacity Increase</strong></td>
+<td>Distributes load across multiple machines</td>
+<td>Increases the power of a single machine</td>
+</tr>
+<tr>
+<td><strong>Fault Tolerance</strong></td>
+<td>High (more machines = more redundancy)</td>
+<td>Low (a single machine failure can take down the system)</td>
+</tr>
+<tr>
+<td><strong>Complexity</strong></td>
+<td>More complex (load balancing, data replication)</td>
+<td>Simpler (no need for load balancing)</td>
+</tr>
+<tr>
+<td><strong>Scalability</strong></td>
+<td>Virtually unlimited (add more machines as needed)</td>
+<td>Limited by physical hardware constraints</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Typically cheaper at scale (cloud environments)</td>
+<td>Can become expensive as hardware needs grow</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Summary</strong></p>
+<ul>
+<li><strong>Horizontal Scaling</strong> (Scaling Out) is adding more machines to distribute the load. It’s great for high availability, fault tolerance, and handling very large-scale systems.</li>
+<li><strong>Vertical Scaling</strong> (Scaling Up) is increasing the capacity of a single machine. It’s simpler to implement but limited by hardware constraints and presents a single point of failure.</li>
+</ul>
+<p>Both approaches have their use cases, and many systems use a combination of both to meet their needs.</p>
+<h3 id="4-whats-different-btween-microservices-and-monolithic-architecture">4. what&rsquo;s different btween Microservices and Monolithic architecture?<a class="headerlink" href="#4-whats-different-btween-microservices-and-monolithic-architecture" title="Permanent link">&para;</a></h3>
+<p>Here’s a comparison between <strong>Microservices</strong> and <strong>Monolithic</strong> architecture:</p>
+<ol>
+<li>
+<p><strong>Monolithic Architecture</strong></p>
+<ul>
+<li>
+<p><strong>Definition</strong>: In a monolithic architecture, the entire application is built as a single, unified unit. All components (UI, business logic, database) are part of one codebase and are deployed as a single application.</p>
+</li>
+<li>
+<p><strong>Structure</strong>: </p>
+</li>
+<li>The application is a single executable or process where all features and functions are tightly coupled.</li>
+<li>
+<p>Components like user interfaces, business logic, and data access layers are part of the same system.</p>
+</li>
+<li>
+<p><strong>Advantages</strong>:</p>
+</li>
+<li><strong>Simplicity</strong>: Easier to develop, test, and deploy because everything is in one codebase.</li>
+<li><strong>Performance</strong>: Communication between components is in-memory, making interactions faster.</li>
+<li>
+<p><strong>Development Speed</strong>: For smaller applications, development is faster since everything is centralized.</p>
+</li>
+<li>
+<p><strong>Challenges</strong>:</p>
+</li>
+<li><strong>Scalability</strong>: Scaling requires scaling the entire application, even if only one part needs additional resources.</li>
+<li><strong>Maintenance</strong>: As the application grows, maintaining and updating the code becomes difficult due to tight coupling.</li>
+<li><strong>Deployment</strong>: Any small change requires redeploying the entire application, which can slow down release cycles.</li>
+<li>
+<p><strong>Flexibility</strong>: Harder to adopt new technologies because the whole system is built using a single stack.</p>
+</li>
+<li>
+<p><strong>Use Case</strong>: Suitable for small or simple applications where scalability, deployment, and maintenance complexities are not critical concerns.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Microservices Architecture</strong></p>
+<ul>
+<li>
+<p><strong>Definition</strong>: In a microservices architecture, the application is composed of small, independent services that communicate with each other, typically over a network. Each service focuses on a specific business capability and can be developed, deployed, and scaled independently.</p>
+</li>
+<li>
+<p><strong>Structure</strong>:</p>
+</li>
+<li>Each microservice is a separate, autonomous component, typically running as an individual process.</li>
+<li>
+<p>Microservices communicate over lightweight protocols (e.g., HTTP/REST, gRPC, or message queues).</p>
+</li>
+<li>
+<p><strong>Advantages</strong>:</p>
+</li>
+<li><strong>Scalability</strong>: Services can be scaled independently based on their resource needs, allowing more efficient use of infrastructure.</li>
+<li><strong>Resilience</strong>: Failure of one service doesn&rsquo;t necessarily bring down the entire system. Services are isolated, which improves fault tolerance.</li>
+<li><strong>Flexibility</strong>: Teams can choose different technologies, languages, and databases for different services, which provides technological freedom.</li>
+<li><strong>Faster Deployments</strong>: Small, independent services can be deployed and updated without redeploying the entire application, allowing for more frequent releases.</li>
+<li>
+<p><strong>Team Autonomy</strong>: Teams can work on different services in parallel, improving development speed and ownership.</p>
+</li>
+<li>
+<p><strong>Challenges</strong>:</p>
+</li>
+<li><strong>Complexity</strong>: Managing a distributed system introduces complexity, especially around inter-service communication, data consistency, and failure handling.</li>
+<li><strong>Latency</strong>: Communication between services over a network introduces latency compared to in-memory communication in monolithic systems.</li>
+<li><strong>Deployment and Monitoring</strong>: Requires sophisticated tooling for CI/CD pipelines, monitoring, and troubleshooting across multiple services.</li>
+<li>
+<p><strong>Data Management</strong>: Ensuring consistency across services can be challenging since each service might manage its own database.</p>
+</li>
+<li>
+<p><strong>Use Case</strong>: Suitable for large, complex, and scalable applications where flexibility, independent scaling, and frequent updates are required.</p>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>Key Differences</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Aspect</strong></th>
+<th><strong>Monolithic Architecture</strong></th>
+<th><strong>Microservices Architecture</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Structure</strong></td>
+<td>Single codebase and process</td>
+<td>Multiple, independent services</td>
+</tr>
+<tr>
+<td><strong>Scalability</strong></td>
+<td>Scales as a whole (vertically)</td>
+<td>Scales individual services (horizontally)</td>
+</tr>
+<tr>
+<td><strong>Deployment</strong></td>
+<td>Single deployment unit</td>
+<td>Each service is deployed independently</td>
+</tr>
+<tr>
+<td><strong>Communication</strong></td>
+<td>In-memory communication between components</td>
+<td>Network-based communication (e.g., HTTP, messaging)</td>
+</tr>
+<tr>
+<td><strong>Fault Tolerance</strong></td>
+<td>Failure in one part may affect the entire system</td>
+<td>Failure in one service does not affect the whole app</td>
+</tr>
+<tr>
+<td><strong>Development Speed</strong></td>
+<td>Fast for small apps but slows as the system grows</td>
+<td>Faster with independent teams for different services</td>
+</tr>
+<tr>
+<td><strong>Technological Flexibility</strong></td>
+<td>Limited to a single tech stack</td>
+<td>Different services can use different tech stacks</td>
+</tr>
+<tr>
+<td><strong>Data Management</strong></td>
+<td>Shared database for the entire application</td>
+<td>Each service can manage its own database</td>
+</tr>
+<tr>
+<td><strong>Testing</strong></td>
+<td>Easier for smaller apps, harder for larger apps</td>
+<td>More complex testing, requiring integration testing</td>
+</tr>
+<tr>
+<td><strong>Complexity</strong></td>
+<td>Lower for small apps, higher for large apps</td>
+<td>Higher due to distributed nature and service orchestration</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Summary</strong></p>
+<ul>
+<li><strong>Monolithic Architecture</strong> is simpler and easier to manage for smaller applications but can become hard to scale and maintain as the application grows.</li>
+<li><strong>Microservices Architecture</strong> offers flexibility, scalability, and resilience but introduces complexity, requiring more sophisticated infrastructure and management strategies.</li>
+</ul>
+<p>Many companies start with a monolithic architecture for simplicity and transition to microservices as their application and teams grow.</p>
+<h3 id="5-difference-between-vertical-and-horizontal-partitioning">5. Difference between Vertical and horizontal partitioning ?<a class="headerlink" href="#5-difference-between-vertical-and-horizontal-partitioning" title="Permanent link">&para;</a></h3>
+<p><strong>Vertical Partitioning</strong> and <strong>Horizontal Partitioning</strong> are techniques used in databases to improve performance, scalability, and manageability by dividing data across tables or databases. Here’s a breakdown of both:</p>
+<ol>
+<li>
+<p><strong>Vertical Partitioning</strong></p>
+<ul>
+<li>
+<p><strong>Definition</strong>: Vertical partitioning involves splitting a table into multiple tables or partitions based on columns. Different groups of columns are stored in separate partitions, but each partition contains the same rows (identical primary keys).</p>
+</li>
+<li>
+<p><strong>How It Works</strong>:</p>
+</li>
+<li>The original table’s columns are divided into smaller, more focused tables.</li>
+<li>
+<p>Each partition typically contains a subset of columns, along with the primary key or identifier to link the partitions.</p>
+</li>
+<li>
+<p><strong>Advantages</strong>:</p>
+</li>
+<li><strong>Performance</strong>: Reduces the number of columns scanned for certain queries, which can improve query performance.</li>
+<li><strong>Security</strong>: Sensitive data (e.g., personal info) can be stored separately, making access control and encryption easier.</li>
+<li>
+<p><strong>Manageability</strong>: Different partitions can be placed on different physical storage based on usage patterns or storage requirements.</p>
+</li>
+<li>
+<p><strong>Use Cases</strong>:</p>
+</li>
+<li>When some columns in a table are accessed much more frequently than others (e.g., an &ldquo;orders&rdquo; table where the customer’s shipping address is rarely accessed but the order details are accessed often).</li>
+<li>
+<p>When certain fields are sensitive and need to be handled with additional security layers.</p>
+</li>
+<li>
+<p><strong>Example</strong>: </p>
+</li>
+<li>A table called <code>Users</code> might be split into two tables:<ul>
+<li><code>User_Basic_Info</code>: (User_ID, First_Name, Last_Name, Email)</li>
+<li><code>User_Details</code>: (User_ID, Address, Date_Of_Birth, Phone_Number)</li>
+</ul>
+</li>
+<li>Both tables share the same <code>User_ID</code> for joining them when necessary.</li>
+</ul>
+</li>
+<li>
+<p><strong>Horizontal Partitioning (Sharding)</strong></p>
+<ul>
+<li>
+<p><strong>Definition</strong>: Horizontal partitioning involves splitting a table into multiple tables or partitions based on rows. Different sets of rows are stored in different partitions, each partition containing all columns but only a subset of rows.</p>
+</li>
+<li>
+<p><strong>How It Works</strong>:</p>
+</li>
+<li>The original table is divided into several smaller tables where each partition contains the same set of columns, but each partition has different rows.</li>
+<li>
+<p>Rows are typically divided based on a specific key or range (e.g., customer IDs, geographic regions).</p>
+</li>
+<li>
+<p><strong>Advantages</strong>:</p>
+</li>
+<li><strong>Scalability</strong>: Horizontal partitioning distributes rows across multiple databases or servers, which allows for better scaling across systems.</li>
+<li><strong>Performance</strong>: Each partition handles fewer rows, improving query performance for queries targeting specific partitions.</li>
+<li>
+<p><strong>Load Distribution</strong>: Workload is distributed, reducing the load on individual partitions.</p>
+</li>
+<li>
+<p><strong>Use Cases</strong>:</p>
+</li>
+<li>When a table becomes too large to handle efficiently or when the volume of reads and writes is extremely high.</li>
+<li>
+<p>When the data is naturally partitionable, such as splitting user data by region or time periods.</p>
+</li>
+<li>
+<p><strong>Example</strong>:</p>
+</li>
+<li>A <code>Customers</code> table is split based on geographic regions:<ul>
+<li><code>Customers_Region_A</code>: Contains customer data from Region A.</li>
+<li><code>Customers_Region_B</code>: Contains customer data from Region B.</li>
+</ul>
+</li>
+<li>Each table has the same columns (Customer_ID, Name, Address, etc.), but different rows based on the region.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Key Differences</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Aspect</strong></th>
+<th><strong>Vertical Partitioning</strong></th>
+<th><strong>Horizontal Partitioning</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Basis of Partitioning</strong></td>
+<td>Columns (splits by grouping columns)</td>
+<td>Rows (splits by grouping rows)</td>
+</tr>
+<tr>
+<td><strong>Structure</strong></td>
+<td>Each partition holds a subset of columns</td>
+<td>Each partition holds a subset of rows</td>
+</tr>
+<tr>
+<td><strong>When to Use</strong></td>
+<td>When certain columns are accessed or stored separately</td>
+<td>When tables become too large and need to be distributed</td>
+</tr>
+<tr>
+<td><strong>Performance Benefits</strong></td>
+<td>Improves query performance by reducing column scanning</td>
+<td>Improves performance by reducing the number of rows in each partition</td>
+</tr>
+<tr>
+<td><strong>Complexity</strong></td>
+<td>Easier to manage, but may require more joins for queries</td>
+<td>More complex to implement (sharding, routing queries)</td>
+</tr>
+<tr>
+<td><strong>Scalability</strong></td>
+<td>Improves column-specific access patterns</td>
+<td>Great for distributing large datasets across multiple nodes or servers</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Storing less-frequently accessed columns in separate partitions</td>
+<td>Distributing large user bases or geographic data</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Summary:</strong></p>
+<ul>
+<li><strong>Vertical Partitioning</strong> splits a table based on columns, improving performance for specific queries and offering easier management of certain columns, especially in terms of security and access control.</li>
+<li><strong>Horizontal Partitioning</strong> (sharding) splits the table based on rows, which is highly beneficial for scaling and distributing large datasets across multiple databases or servers.</li>
+</ul>
+<p>Both techniques can be used together in some scenarios to optimize different aspects of data storage and access.</p>
+<h3 id="6-whats-different-between-api-gateway-vs-load-balancer">6. What&rsquo;s different between API Gateway vs Load Balancer?<a class="headerlink" href="#6-whats-different-between-api-gateway-vs-load-balancer" title="Permanent link">&para;</a></h3>
+<p><a href="https://medium.com/javarevisited/difference-between-api-gateway-and-load-balancer-in-microservices-8c8b552a024">Detail Materials</a></p>
+<p>Here&rsquo;s a breakdown of the differences between an <strong>API Gateway</strong> and a <strong>Load Balancer</strong>:</p>
+<ol>
+<li>
+<p><strong>API Gateway</strong></p>
+<ul>
+<li>
+<p><strong>Definition</strong>: An API Gateway is a server that acts as an entry point for managing and routing API requests from clients to multiple back-end services or microservices. It handles request routing, composition, protocol translation, authentication, rate limiting, and more.</p>
+</li>
+<li>
+<p><strong>Key Functions</strong>:</p>
+<ul>
+<li><strong>Request Routing</strong>: Directs API requests to the appropriate microservice or backend.</li>
+<li><strong>Authentication &amp; Authorization</strong>: Manages user authentication, security tokens, and access control.</li>
+<li><strong>Rate Limiting</strong>: Controls the number of requests clients can make within a certain time period to prevent overloading.</li>
+<li><strong>Protocol Translation</strong>: Translates between different protocols (e.g., HTTP to gRPC, WebSockets).</li>
+<li><strong>Response Aggregation</strong>: Combines responses from multiple services into a single response before sending it back to the client.</li>
+<li><strong>Caching</strong>: Can cache responses to reduce load on services and speed up response times.</li>
+<li><strong>Logging &amp; Monitoring</strong>: Tracks requests and performance metrics for insights and troubleshooting.</li>
+</ul>
+</li>
+<li>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li><strong>Microservices Architectures</strong>: Manages communication between clients and multiple microservices.</li>
+<li><strong>Security</strong>: Adds authentication, SSL termination, and threat detection at a single point before requests hit backend services.</li>
+<li><strong>API Management</strong>: Provides additional tools for API lifecycle management, such as versioning and rate limiting.</li>
+</ul>
+</li>
+<li>
+<p><strong>Example</strong>: </p>
+<ul>
+<li>In an e-commerce application with multiple microservices (user management, payment, product catalog), an API Gateway routes incoming API requests to the appropriate service (e.g., <code>/products</code>, <code>/checkout</code>) and handles authentication and rate limiting.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Load Balancer</strong></p>
+<ul>
+<li>
+<p><strong>Definition</strong>: A Load Balancer distributes incoming network or application traffic across multiple servers (or instances) to ensure no single server is overwhelmed, improving availability and reliability.</p>
+</li>
+<li>
+<p><strong>Key Functions</strong>:</p>
+<ul>
+<li><strong>Traffic Distribution</strong>: Spreads incoming traffic across multiple servers to ensure no server gets overloaded.</li>
+<li><strong>Health Checks</strong>: Monitors server health and redirects traffic away from failed or slow servers.</li>
+<li><strong>Session Persistence</strong>: Ensures that requests from the same user are routed to the same server for a consistent session experience.</li>
+<li><strong>SSL Termination</strong>: Can handle SSL decryption and offload that work from the backend servers.</li>
+<li><strong>Scaling</strong>: Can dynamically add or remove servers based on the traffic load to ensure performance is maintained.</li>
+<li><strong>Failover</strong>: Automatically redirects traffic to healthy instances when others fail.</li>
+</ul>
+</li>
+<li>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li><strong>Web Applications</strong>: Distributes requests to multiple web servers, improving performance and reliability.</li>
+<li><strong>Redundancy &amp; Failover</strong>: Ensures the application is still accessible even if some servers go down.</li>
+<li><strong>High Availability</strong>: Helps achieve 24/7 uptime by balancing traffic and recovering from failures.</li>
+</ul>
+</li>
+<li>
+<p><strong>Example</strong>: </p>
+<ul>
+<li>In a traditional web app with multiple identical servers running behind a load balancer, the load balancer distributes user requests to different servers based on server load, ensuring efficient use of resources.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>Key Differences</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Aspect</strong></th>
+<th><strong>API Gateway</strong></th>
+<th><strong>Load Balancer</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Primary Purpose</strong></td>
+<td>Manages and routes <strong>API</strong> requests, handles authentication, rate limiting, and more</td>
+<td>Distributes <strong>network/application traffic</strong> across servers</td>
+</tr>
+<tr>
+<td><strong>Focus</strong></td>
+<td>Focused on API management, security, and orchestration</td>
+<td>Focused on traffic distribution and server load management</td>
+</tr>
+<tr>
+<td><strong>Routing Logic</strong></td>
+<td>Routes based on <strong>API paths</strong> (e.g., <code>/users</code>, <code>/orders</code>)</td>
+<td>Routes based on server availability and load balancing algorithms</td>
+</tr>
+<tr>
+<td><strong>Authentication</strong></td>
+<td>Supports <strong>authentication</strong> and authorization (e.g., OAuth, JWT)</td>
+<td>Typically doesn&rsquo;t handle authentication; focus is on traffic routing</td>
+</tr>
+<tr>
+<td><strong>Protocol Support</strong></td>
+<td>Can handle <strong>multiple protocols</strong> (e.g., HTTP, WebSockets, gRPC)</td>
+<td>Typically supports <strong>HTTP/HTTPS</strong> and TCP/UDP traffic</td>
+</tr>
+<tr>
+<td><strong>Advanced Features</strong></td>
+<td>Provides <strong>rate limiting</strong>, caching, API versioning, request aggregation</td>
+<td>Provides <strong>failover</strong>, session persistence, and server health checks</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Ideal for <strong>microservices</strong> and managing complex API ecosystems</td>
+<td>Ideal for <strong>scaling web applications</strong> or services by balancing traffic across servers</td>
+</tr>
+<tr>
+<td><strong>Response Aggregation</strong></td>
+<td>Can combine responses from multiple services into one response</td>
+<td>Does not aggregate responses; purely traffic distribution</td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>Handles <strong>security policies</strong>, SSL termination, and threat detection at the API level</td>
+<td>Can offload <strong>SSL termination</strong>, but primarily focuses on traffic distribution</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Summary:</strong></p>
+<ul>
+<li><strong>API Gateway</strong>: Provides comprehensive API management, including routing, authentication, rate limiting, protocol translation, and response aggregation. It is designed to handle <strong>API traffic</strong> and is particularly useful in <strong>microservices</strong> environments.</li>
+<li><strong>Load Balancer</strong>: Primarily responsible for distributing <strong>network or web traffic</strong> across multiple servers to balance the load and ensure high availability and fault tolerance. It is more about ensuring <strong>scalability and performance</strong>.</li>
+</ul>
+<p>In short, an <strong>API Gateway</strong> focuses on managing and optimizing <strong>API requests</strong> while a <strong>Load Balancer</strong> focuses on <strong>distributing traffic</strong> across servers to balance load and ensure availability. Many modern architectures use both, with the load balancer sitting at the network level and the API gateway handling API-level concerns.</p>
+<h3 id="7-difference-between-kafka-and-rabbitmq">7. Difference between Kafka and RabbitMQ?<a class="headerlink" href="#7-difference-between-kafka-and-rabbitmq" title="Permanent link">&para;</a></h3>
+<p>Here’s a detailed comparison between <strong>Kafka</strong> and <strong>RabbitMQ</strong>, two popular messaging systems with distinct architectures and use cases:</p>
+<ol>
+<li>
+<p><strong>Kafka</strong></p>
+<ul>
+<li>
+<p><strong>Definition</strong>: Kafka is a distributed event streaming platform designed for high-throughput, fault-tolerant, and real-time data processing. It acts more like a distributed log system rather than a traditional message queue.</p>
+</li>
+<li>
+<p><strong>Key Characteristics</strong>:</p>
+<ul>
+<li><strong>Publish-Subscribe Model</strong>: Kafka uses a <strong>publish-subscribe</strong> model where producers send data to <strong>topics</strong>, and consumers read from these topics.</li>
+<li><strong>Data Persistence</strong>: Kafka <strong>stores messages on disk</strong> for a configurable time, allowing consumers to read messages multiple times (replayability).</li>
+<li><strong>High Throughput</strong>: Kafka is optimized for <strong>high throughput</strong> and can handle millions of messages per second.</li>
+<li><strong>Partitioning and Replication</strong>: Kafka topics are divided into <strong>partitions</strong>, which can be distributed across a cluster for <strong>scalability</strong> and <strong>fault tolerance</strong> (through replication).</li>
+<li><strong>Log-Based Storage</strong>: Kafka keeps an append-only log, where messages are stored sequentially and can be replayed by consumers.</li>
+<li><strong>Use Case Focus</strong>: Kafka is well-suited for event streaming, real-time analytics, log aggregation, and high-throughput data pipelines.</li>
+</ul>
+</li>
+<li>
+<p><strong>Strengths</strong>:</p>
+<ul>
+<li><strong>Scalable</strong>: Kafka scales horizontally by partitioning topics across multiple brokers.</li>
+<li><strong>Replayable</strong>: Messages are persisted for a configurable amount of time, allowing consumers to reprocess data.</li>
+<li><strong>High Throughput</strong>: Designed for handling large volumes of data efficiently.</li>
+<li><strong>Fault Tolerance</strong>: Built-in replication ensures high availability and resilience to failures.</li>
+</ul>
+</li>
+<li>
+<p><strong>Weaknesses</strong>:</p>
+<ul>
+<li><strong>Latency</strong>: Kafka’s focus on high throughput and durability can result in higher latency compared to RabbitMQ.</li>
+<li><strong>Operational Complexity</strong>: Running Kafka clusters requires more operational overhead and expertise.</li>
+<li><strong>Message Prioritization</strong>: Kafka doesn’t natively support prioritization or message expiration.</li>
+</ul>
+</li>
+<li>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li><strong>Real-time data streaming</strong> (e.g., log aggregation, metrics).</li>
+<li><strong>Event sourcing</strong> in microservices architectures.</li>
+<li><strong>Data pipelines</strong> for high-throughput environments (e.g., data lakes, analytics platforms).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>RabbitMQ</strong></p>
+<ul>
+<li>
+<p><strong>Definition</strong>: RabbitMQ is a traditional message broker designed for <strong>message queuing</strong>. It supports multiple messaging patterns, including <strong>point-to-point</strong> and <strong>publish-subscribe</strong>, and it implements the <strong>Advanced Message Queuing Protocol (AMQP)</strong>.</p>
+</li>
+<li>
+<p><strong>Key Characteristics</strong>:</p>
+<ul>
+<li><strong>Message Queue Model</strong>: RabbitMQ primarily uses <strong>message queues</strong>, where producers send messages to <strong>exchanges</strong>, which route messages to <strong>queues</strong> based on routing rules.</li>
+<li><strong>AMQP Protocol</strong>: RabbitMQ adheres to the AMQP standard, providing features like message acknowledgment, durability, and routing.</li>
+<li><strong>Low Latency</strong>: RabbitMQ is optimized for <strong>low-latency</strong> messaging, making it suitable for real-time applications.</li>
+<li><strong>Message Acknowledgment and Reliability</strong>: RabbitMQ ensures reliable delivery of messages through acknowledgments, retries, and dead-letter queues.</li>
+<li><strong>Flexible Routing</strong>: Supports a variety of <strong>routing patterns</strong> using different exchange types (e.g., direct, topic, fanout).</li>
+<li><strong>Message Prioritization and TTL</strong>: RabbitMQ supports <strong>message prioritization</strong>, <strong>expiration</strong>, and <strong>dead-letter queues</strong> to handle failed messages.</li>
+</ul>
+</li>
+<li>
+<p><strong>Strengths</strong>:</p>
+<ul>
+<li><strong>Low Latency</strong>: RabbitMQ is optimized for fast, low-latency message delivery.</li>
+<li><strong>Feature-Rich</strong>: RabbitMQ supports a wide variety of messaging features, including <strong>message durability</strong>, <strong>acknowledgments</strong>, <strong>prioritization</strong>, and <strong>retry policies</strong>.</li>
+<li><strong>Flexible</strong>: Can handle both <strong>task-based</strong> messaging (job queues) and <strong>event-based</strong> messaging (publish-subscribe).</li>
+<li><strong>Simplicity</strong>: Easier to set up and use for smaller-scale applications compared to Kafka.</li>
+</ul>
+</li>
+<li>
+<p><strong>Weaknesses</strong>:</p>
+<ul>
+<li><strong>Limited Scalability</strong>: RabbitMQ is not as scalable as Kafka for handling massive amounts of data.</li>
+<li><strong>No Message Replay</strong>: Once a message is consumed, it’s no longer available unless explicitly requeued.</li>
+<li><strong>Throughput</strong>: While suitable for most real-time applications, RabbitMQ struggles with <strong>very high throughput</strong> use cases compared to Kafka.</li>
+</ul>
+</li>
+<li>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li><strong>Task distribution</strong>: Distributing tasks to worker processes in a system.</li>
+<li><strong>Microservices communication</strong>: Managing inter-service messaging and RPC.</li>
+<li><strong>Reliable message delivery</strong>: Systems requiring durable, reliable messaging, with features like <strong>dead-letter queues</strong> and <strong>retries</strong>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>Key Differences Between Kafka and RabbitMQ</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Aspect</strong></th>
+<th><strong>Kafka</strong></th>
+<th><strong>RabbitMQ</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Primary Use Case</strong></td>
+<td>Real-time event streaming, data pipelines, and log aggregation</td>
+<td>Message queuing, task distribution, microservices communication</td>
+</tr>
+<tr>
+<td><strong>Message Model</strong></td>
+<td><strong>Publish-Subscribe</strong> (distributed log)</td>
+<td><strong>Queue-based</strong> with flexible routing (point-to-point, pub-sub)</td>
+</tr>
+<tr>
+<td><strong>Protocol</strong></td>
+<td>Kafka’s custom protocol</td>
+<td><strong>AMQP</strong>, MQTT, STOMP, and more</td>
+</tr>
+<tr>
+<td><strong>Persistence</strong></td>
+<td>Messages are <strong>persisted</strong> on disk by default</td>
+<td>Messages can be persisted, but are deleted after consumption</td>
+</tr>
+<tr>
+<td><strong>Replayability</strong></td>
+<td>Yes, consumers can replay messages</td>
+<td>No, messages are deleted after consumption unless explicitly requeued</td>
+</tr>
+<tr>
+<td><strong>Throughput</strong></td>
+<td>Very <strong>high throughput</strong> (millions of messages/sec)</td>
+<td>Moderate throughput</td>
+</tr>
+<tr>
+<td><strong>Latency</strong></td>
+<td>Moderate to high (designed for throughput)</td>
+<td>Low latency (designed for fast message delivery)</td>
+</tr>
+<tr>
+<td><strong>Scaling</strong></td>
+<td>Scales horizontally with partitions and brokers</td>
+<td>Limited horizontal scaling, complex cluster management</td>
+</tr>
+<tr>
+<td><strong>Message Ordering</strong></td>
+<td>Ordered within partitions</td>
+<td>Ordered per queue</td>
+</tr>
+<tr>
+<td><strong>Message Prioritization</strong></td>
+<td>Not natively supported</td>
+<td>Supports message prioritization</td>
+</tr>
+<tr>
+<td><strong>Fault Tolerance</strong></td>
+<td>Built-in <strong>replication</strong> and fault tolerance</td>
+<td>Requires clustering for fault tolerance</td>
+</tr>
+<tr>
+<td><strong>Operational Complexity</strong></td>
+<td>Higher operational complexity, requires managing brokers, partitions, and Zookeeper</td>
+<td>Simpler to set up, but needs tuning for large clusters</td>
+</tr>
+<tr>
+<td><strong>Message Routing</strong></td>
+<td>Simple topic-based routing</td>
+<td>Advanced routing with exchanges (e.g., direct, topic, fanout)</td>
+</tr>
+<tr>
+<td><strong>Use Case Fit</strong></td>
+<td>Best for <strong>event streaming</strong> and <strong>large-scale</strong> data pipelines</td>
+<td>Best for <strong>task-based queuing</strong>, <strong>microservices</strong>, and real-time messaging</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Summary:</strong></p>
+<ul>
+<li>
+<p><strong>Kafka</strong>:</p>
+<ul>
+<li>Best for <strong>high-throughput</strong> and <strong>distributed event streaming</strong> use cases.</li>
+<li>Suitable for <strong>real-time analytics</strong>, <strong>log aggregation</strong>, and <strong>data pipelines</strong>.</li>
+<li>Provides <strong>data persistence</strong>, allowing for <strong>replayability</strong> of messages.</li>
+<li>Ideal for large-scale systems needing <strong>horizontal scalability</strong> and <strong>partitioning</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>RabbitMQ</strong>:</p>
+<ul>
+<li>Ideal for <strong>low-latency</strong>, task-based <strong>message queuing</strong> and <strong>microservices</strong> communication.</li>
+<li>Great for reliable <strong>message delivery</strong>, <strong>acknowledgment</strong>, and <strong>routing</strong> with flexible patterns.</li>
+<li>Easier to set up and operate for smaller, simpler applications.</li>
+<li>Lacks the <strong>scalability</strong> and <strong>throughput</strong> of Kafka but offers more flexibility for message delivery guarantees and routing.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Kafka</strong> is a better fit for high-volume <strong>data streaming</strong> and real-time analytics, while <strong>RabbitMQ</strong> is optimized for <strong>task-based messaging</strong>, <strong>job queues</strong>, and <strong>reliable delivery</strong> in microservices architectures.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2020 Danny Guo
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+        <script src="../../js/links_in_new_tabs.js"></script>
+      
+    
+  </body>
+</html>
