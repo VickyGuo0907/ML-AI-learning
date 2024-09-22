@@ -265,8 +265,8 @@ Many companies start with a monolithic architecture for simplicity and transitio
 | **Use Case**                | Storing less-frequently accessed columns in separate partitions | Distributing large user bases or geographic data |
 
 **Summary:**
-- **Vertical Partitioning** splits a table based on columns, improving performance for specific queries and offering easier management of certain columns, especially in terms of security and access control.
-- **Horizontal Partitioning** (sharding) splits the table based on rows, which is highly beneficial for scaling and distributing large datasets across multiple databases or servers.
+	- **Vertical Partitioning** splits a table based on columns, improving performance for specific queries and offering easier management of certain columns, especially in terms of security and access control.
+	- **Horizontal Partitioning** (sharding) splits the table based on rows, which is highly beneficial for scaling and distributing large datasets across multiple databases or servers.
 
 Both techniques can be used together in some scenarios to optimize different aspects of data storage and access.
 
@@ -278,48 +278,47 @@ Here's a breakdown of the differences between an **API Gateway** and a **Load Ba
 
 1. **API Gateway**
 
-- **Definition**: An API Gateway is a server that acts as an entry point for managing and routing API requests from clients to multiple back-end services or microservices. It handles request routing, composition, protocol translation, authentication, rate limiting, and more.
-  
-- **Key Functions**:
-  - **Request Routing**: Directs API requests to the appropriate microservice or backend.
-  - **Authentication & Authorization**: Manages user authentication, security tokens, and access control.
-  - **Rate Limiting**: Controls the number of requests clients can make within a certain time period to prevent overloading.
-  - **Protocol Translation**: Translates between different protocols (e.g., HTTP to gRPC, WebSockets).
-  - **Response Aggregation**: Combines responses from multiple services into a single response before sending it back to the client.
-  - **Caching**: Can cache responses to reduce load on services and speed up response times.
-  - **Logging & Monitoring**: Tracks requests and performance metrics for insights and troubleshooting.
+	- **Definition**: An API Gateway is a server that acts as an entry point for managing and routing API requests from clients to multiple back-end services or microservices. It handles request routing, composition, protocol translation, authentication, rate limiting, and more.
+	
+	- **Key Functions**:
+		- **Request Routing**: Directs API requests to the appropriate microservice or backend.
+		- **Authentication & Authorization**: Manages user authentication, security tokens, and access control.
+		- **Rate Limiting**: Controls the number of requests clients can make within a certain time period to prevent overloading.
+		- **Protocol Translation**: Translates between different protocols (e.g., HTTP to gRPC, WebSockets).
+		- **Response Aggregation**: Combines responses from multiple services into a single response before sending it back to the client.
+		- **Caching**: Can cache responses to reduce load on services and speed up response times.
+		- **Logging & Monitoring**: Tracks requests and performance metrics for insights and troubleshooting.
 
-- **Use Cases**:
-  - **Microservices Architectures**: Manages communication between clients and multiple microservices.
-  - **Security**: Adds authentication, SSL termination, and threat detection at a single point before requests hit backend services.
-  - **API Management**: Provides additional tools for API lifecycle management, such as versioning and rate limiting.
+	- **Use Cases**:
+		- **Microservices Architectures**: Manages communication between clients and multiple microservices.
+		- **Security**: Adds authentication, SSL termination, and threat detection at a single point before requests hit backend services.
+		- **API Management**: Provides additional tools for API lifecycle management, such as versioning and rate limiting.
 
-- **Example**: 
-  - In an e-commerce application with multiple microservices (user management, payment, product catalog), an API Gateway routes incoming API requests to the appropriate service (e.g., `/products`, `/checkout`) and handles authentication and rate limiting.
+	- **Example**: 
+		- In an e-commerce application with multiple microservices (user management, payment, product catalog), an API Gateway routes incoming API requests to the appropriate service (e.g., `/products`, `/checkout`) and handles authentication and rate limiting.
 
----
+	
 
 2. **Load Balancer**
 
-- **Definition**: A Load Balancer distributes incoming network or application traffic across multiple servers (or instances) to ensure no single server is overwhelmed, improving availability and reliability.
-  
-- **Key Functions**:
-  - **Traffic Distribution**: Spreads incoming traffic across multiple servers to ensure no server gets overloaded.
-  - **Health Checks**: Monitors server health and redirects traffic away from failed or slow servers.
-  - **Session Persistence**: Ensures that requests from the same user are routed to the same server for a consistent session experience.
-  - **SSL Termination**: Can handle SSL decryption and offload that work from the backend servers.
-  - **Scaling**: Can dynamically add or remove servers based on the traffic load to ensure performance is maintained.
-  - **Failover**: Automatically redirects traffic to healthy instances when others fail.
+	- **Definition**: A Load Balancer distributes incoming network or application traffic across multiple servers (or instances) to ensure no single server is overwhelmed, improving availability and reliability.
+	
+	- **Key Functions**:
+		- **Traffic Distribution**: Spreads incoming traffic across multiple servers to ensure no server gets overloaded.
+		- **Health Checks**: Monitors server health and redirects traffic away from failed or slow servers.
+		- **Session Persistence**: Ensures that requests from the same user are routed to the same server for a consistent session experience.
+		- **SSL Termination**: Can handle SSL decryption and offload that work from the backend servers.
+		- **Scaling**: Can dynamically add or remove servers based on the traffic load to ensure performance is maintained.
+		- **Failover**: Automatically redirects traffic to healthy instances when others fail.
 
-- **Use Cases**:
-  - **Web Applications**: Distributes requests to multiple web servers, improving performance and reliability.
-  - **Redundancy & Failover**: Ensures the application is still accessible even if some servers go down.
-  - **High Availability**: Helps achieve 24/7 uptime by balancing traffic and recovering from failures.
+	- **Use Cases**:
+		- **Web Applications**: Distributes requests to multiple web servers, improving performance and reliability.
+		- **Redundancy & Failover**: Ensures the application is still accessible even if some servers go down.
+		- **High Availability**: Helps achieve 24/7 uptime by balancing traffic and recovering from failures.
 
-- **Example**: 
-  - In a traditional web app with multiple identical servers running behind a load balancer, the load balancer distributes user requests to different servers based on server load, ensuring efficient use of resources.
+	- **Example**: 
+		- In a traditional web app with multiple identical servers running behind a load balancer, the load balancer distributes user requests to different servers based on server load, ensuring efficient use of resources.
 
----
 
 **Key Differences**
 
@@ -339,8 +338,8 @@ Here's a breakdown of the differences between an **API Gateway** and a **Load Ba
 
 **Summary:**
 
-- **API Gateway**: Provides comprehensive API management, including routing, authentication, rate limiting, protocol translation, and response aggregation. It is designed to handle **API traffic** and is particularly useful in **microservices** environments.
-  
-- **Load Balancer**: Primarily responsible for distributing **network or web traffic** across multiple servers to balance the load and ensure high availability and fault tolerance. It is more about ensuring **scalability and performance**.
+	- **API Gateway**: Provides comprehensive API management, including routing, authentication, rate limiting, protocol translation, and response aggregation. It is designed to handle **API traffic** and is particularly useful in **microservices** environments.
+	
+	- **Load Balancer**: Primarily responsible for distributing **network or web traffic** across multiple servers to balance the load and ensure high availability and fault tolerance. It is more about ensuring **scalability and performance**.
 
 In short, an **API Gateway** focuses on managing and optimizing **API requests** while a **Load Balancer** focuses on **distributing traffic** across servers to balance load and ensure availability. Many modern architectures use both, with the load balancer sitting at the network level and the API gateway handling API-level concerns.
